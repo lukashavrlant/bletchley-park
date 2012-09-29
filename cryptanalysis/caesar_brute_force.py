@@ -1,7 +1,7 @@
 from ciphers.caesar import Caesar
 import string
 
-class CaesarBruteFroce(object):
+class CaesarBruteForce(object):
 	"""Cryptanalysis method for Caesar cipher"""
 	def __init__(self):
 		super(CaesarBruteFroce, self).__init__()

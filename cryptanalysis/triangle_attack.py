@@ -37,7 +37,7 @@ class TriangleAttack(object):
 			if union:
 				return list(union)[0]
 			else:
-				return None
+				return '?'
 
 	def _get_set_of_keys(self, lang_letters, list_of_text_letters):
 		temp_keys = {self._get_key("".join(lang_letters), x) for x in list_of_text_letters}
