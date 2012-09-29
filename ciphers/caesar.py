@@ -5,10 +5,10 @@ class Caesar(object):
 	def __init__(self):
 		super(Caesar, self).__init__()
 
-	def encode(self, open_text, key):
+	def encrypt(self, open_text, key):
 		return self._transform_text(open_text, key, self.shift_char_enc)
 
-	def decode(self, cipher_text, key):
+	def decrypt(self, cipher_text, key):
 		return self._transform_text(cipher_text, key, self.shift_char_dec)
 
 	def _transform_text(self, text, key, fun):

@@ -45,7 +45,7 @@ class TriangleAttack(object):
 
 	def _get_key(self, lang_letters, text_letters):
 		for key in string.ascii_lowercase:
-			if set(self.caesar.encode(lang_letters, key)) == set(text_letters):
+			if set(self.caesar.encrypt(lang_letters, key)) == set(text_letters):
 				return key
 
 	def _get_counter(self, text):

@@ -5,12 +5,12 @@ class Transposition(object):
 	def __init__(self):
 		super(Transposition, self).__init__()
 	
-	def encode(self, open_text, key):
+	def encrypt(self, open_text, key):
 		partition = self._partition_text(open_text, len(key))
 		mapping = self._get_mapping(key)
 		return "".join(self._shuffle_letters(x, mapping) for x in partition)
 
-	def decode(self, cipher_text, key):
+	def decrypt(self, cipher_text, key):
 		partition = self._partition_text(cipher_text, len(key))
 		mapping = {v:k for k,v in self._get_mapping(key).items()}
 		return "".join(self._shuffle_letters(x, mapping) for x in partition)

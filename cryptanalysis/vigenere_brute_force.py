@@ -11,7 +11,7 @@ class VigenereBruteForce(object):
 	
 	def crack(self, cipher_text, langstats):
 		keys = self._get_possible_keys(cipher_text, langstats)
-		ranked_keys = {k:langstats.similarity_index(self.vigenere.decode(cipher_text, k)) for k in keys}
+		ranked_keys = {k:langstats.similarity_index(self.vigenere.decrypt(cipher_text, k)) for k in keys}
 		return self._choose_key(ranked_keys)
 
 	def _choose_key(self, keys):
