@@ -18,3 +18,8 @@ class LanguageStats(object):
 			index += abs(v - lang_stats[k])
 		return 1/index
 		
+	def most_common_letters(self, n):
+		return map(lambda (a, b): a, Counter(self.frequency['letters']).most_common(n))
+
+	def least_common_letters(self, n):
+		return map(lambda (a, b): a, list(reversed(Counter(self.frequency['letters']).most_common()))[:n])
