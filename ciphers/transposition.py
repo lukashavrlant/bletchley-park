@@ -8,7 +8,8 @@ class Transposition(object):
 	def encrypt(self, open_text, key):
 		partition = self._partition_text(open_text, len(key))
 		mapping = self._get_mapping(key)
-		return "".join(self._shuffle_letters(x, mapping) for x in partition)
+		res = "".join(self._shuffle_letters(x, mapping) for x in partition)
+		print res
 
 	def decrypt(self, cipher_text, key):
 		partition = self._partition_text(cipher_text, len(key))
