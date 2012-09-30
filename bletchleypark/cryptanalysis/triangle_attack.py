@@ -56,14 +56,11 @@ class TriangleAttack(object):
 		return counter
 
 	def _find_triangle(self, lang_letters, text_letters):
-		triangles = []
 		distances = self._compute_distances(lang_letters)
 		for perm in combinations(text_letters, self.chars_from_lang):
 			curr_distances = self._compute_distances(perm)
 			if curr_distances == distances:
-				triangles.append("".join(perm))
-		return triangles
-
+				yield "".join(perm)
 
 	def _compute_distances(self, letters):
 		return sorted([self._letter_distance(a, b) for a, b in combinations(letters, 2)])

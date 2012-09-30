@@ -13,8 +13,7 @@ class Caesar(object):
 
 	def _transform_text(self, text, key, fun):
 		shift_key = ord(key) - ord('a')
-		transformed_text = map(lambda c: fun(c, shift_key), text)
-		return "".join(transformed_text)
+		return "".join(fun(c, shift_key) for c in text)
 
 	def shift_char_enc(self, char, shift_key):
 		shift_char = ord(char) + shift_key
