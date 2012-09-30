@@ -19,10 +19,10 @@ Or simply download zip file and do the same without `git clone` part.
 
 See `bletchleypark -h`. Supported ciphers are: 
 
-- `caesar` (for Caesar/Shift cipher)
-- `vig` (for Vigenère cipher)
-- `subs` (for Substitution cipher; only encrypt/decrypt methods, no cracking method yet)
-- `trans` (for Transposition cipher)
+- `caesar` for Caesar/Shift cipher. Key has to be only one letter.
+- `vig` for Vigenère cipher. Key can be arbitrary word, i.e. `[a-b]+`.  
+- `subs` for Substitution cipher; only encrypt/decrypt methods, no cracking method yet. Key has to be permutation of alphabet, for example camntwqzipryofxkhdlusbevjg.
+- `trans` for Transposition cipher. Key can be arbitrary word, i.e. `[a-b]+`.
 
 ## Examples
 	
