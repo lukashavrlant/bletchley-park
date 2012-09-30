@@ -45,13 +45,13 @@ crackers = {
 ### Encrypting
 if args.e:
 	cipher = ciphers[args.e.lower()]()
-	cipher_text = cipher.encrypt(input_text, args.k)
+	cipher_text = cipher.encrypt(input_text, args.k.lower())
 	send_to_output(cipher_text, args.o)
 
 ## Decrypting
 if args.d:
 	cipher = ciphers[args.d.lower()]()
-	decrypted_text = cipher.decrypt(input_text, args.k)
+	decrypted_text = cipher.decrypt(input_text, args.k.lower())
 	send_to_output(decrypted_text, args.o)
 
 ### Cracking
