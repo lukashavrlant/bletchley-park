@@ -14,4 +14,4 @@ class Vigenere(object):
 		return self._transform_text(cipher_text, key, self.caesar.shift_char_dec)
 
 	def _transform_text(self, text, key, shift_fun):
-		return "".join(map(lambda (c, k): shift_fun(c, ord(k) - ord('a')), izip(text, cycle(key))))
+		return "".join(shift_fun(c, ord(k) - ord('a')) for c, k in izip(text, cycle(key)))
