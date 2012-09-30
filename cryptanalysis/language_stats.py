@@ -4,10 +4,10 @@ from collections import Counter
 
 class LanguageStats(object):
 	"""Statistic information about language"""
-	def __init__(self, frequency, all_words):
+	def __init__(self, lang_model):
 		super(LanguageStats, self).__init__()
-		self.frequency = frequency
-		self.words = all_words
+		self.frequency = lang_model.get_frequency()
+		self.model = lang_model
 
 	def similarity_index(self, text):
 		ltext = float(len(text))
@@ -30,6 +30,15 @@ class LanguageStats(object):
 				final_key = key
 		return final_key
 
+	def most_common_letters(self, n):
+		return map(lambda (a, b): a, Counter(self.frequency['letters']).most_common(n))
+
+	def least_common_letters(self, n):
+		return map(lambda (a, b): a, list(reversed(Counter(self.frequency['letters']).most_common()))[:n])
+
+	def get_words(self, length):
+		return self.model.get_words(length)
+
 	def _count_top_words(self, text):
 		return float(sum(1 if x in text else 0 for x in self.frequency['topwords'])) / (len(text))
 
@@ -44,12 +53,3 @@ class LanguageStats(object):
 		for k, v in text_freq.items():
 			index += abs(v - lang_freq.get(k, 0))
 		return 1/index
-		
-	def most_common_letters(self, n):
-		return map(lambda (a, b): a, Counter(self.frequency['letters']).most_common(n))
-
-	def least_common_letters(self, n):
-		return map(lambda (a, b): a, list(reversed(Counter(self.frequency['letters']).most_common()))[:n])
-
-	def get_words(self, length):
-		return self.words.read("words/%s.dic" % length).split()
