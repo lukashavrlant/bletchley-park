@@ -5,9 +5,9 @@ DATA_DIRECTORY = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(i
 def get_lang_path(lang):
 	return DATA_DIRECTORY + "/lang/%s.zip" % lang
 
-def readfile(path):
-	with open(path, "r") as f:
-		return f.read()
+def readfile(path, charset = 'utf-8'):
+	with open(path, "rb") as f:
+		return f.read().decode('utf-8')
 
 def savefile(path, content):
 	with open(path, "w") as f:

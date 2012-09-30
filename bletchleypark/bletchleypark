@@ -16,10 +16,11 @@ parser.add_argument('-k', metavar='key', help="Key for a cipher")
 parser.add_argument('-t', metavar='input_text', default = "", help="Input text for the program")
 parser.add_argument('-c', metavar='cipher', help="Input text will be cracked using cipher's cracking method: caesar, vig, subs, trans")
 parser.add_argument('--text', action="store_true", help="Program will print decrypted text instead of key")
+parser.add_argument('--charset', metavar="S", help="Charset of the input file")
 args = parser.parse_args()
 
 if args.i:
-	input_text = readfile(args.i)
+	input_text = readfile(args.i, args.charset if args.charset else 'utf-8')
 elif args.t:
 	input_text = args.t
 else:
