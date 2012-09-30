@@ -15,6 +15,8 @@ class Transposition(object):
 	def decrypt(self, cipher_text, key):
 		key = self._repair_key(key)
 		partition = self._partition_text_decrypt(cipher_text, len(cipher_text) / len(key))
+		reshuffled_text = "".join(partition)
+		partition = self._partition_text(reshuffled_text, len(key))
 		mapping = {v:k for k,v in self._get_mapping(key).items()}
 		return "".join(self._shuffle_letters(x, mapping) for x in partition)
 
