@@ -7,7 +7,7 @@ def get_lang_path(lang):
 
 def readfile(path, charset = 'utf-8'):
 	with open(path, "rb") as f:
-		return f.read().decode('utf-8')
+		return f.read().decode(charset)
 
 def savefile(path, content):
 	with open(path, "w") as f:
