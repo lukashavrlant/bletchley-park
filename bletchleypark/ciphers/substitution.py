@@ -7,10 +7,8 @@ class Substitution(object):
 	
 	def encrypt(self, open_text, key):
 		substitution = dict(zip(string.ascii_lowercase, key))
-		cipher_text = map(lambda c: substitution[c], open_text)
-		return "".join(cipher_text)
+		return "".join(substitution[c] for c in open_text)
 
 	def decrypt(self, cipher_text, key):
 		substitution = dict(zip(key, string.ascii_lowercase))
-		open_text = map(lambda c: substitution[c], cipher_text)
-		return "".join(open_text)
+		return "".join(substitution[c] for c in cipher_text)
