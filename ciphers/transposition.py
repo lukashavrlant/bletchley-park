@@ -16,6 +16,10 @@ class Transposition(object):
 		mapping = {v:k for k,v in self._get_mapping(key).items()}
 		return "".join(self._shuffle_letters(x, mapping) for x in partition)
 
+	def _repair_key(self, key):
+		mapping = dict((b,a) for a,b in enumerate(sorted(key)))
+		return "".join(chr(mapping[x] + ord('a')) for x in key)
+
 	def _shuffle_letters(self, letters, mapping):
 		return "".join(letters[mapping[i]] for i in range(len(letters)))
 
