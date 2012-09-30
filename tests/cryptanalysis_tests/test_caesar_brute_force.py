@@ -10,7 +10,7 @@ class TestCaesarBruteForce(unittest.TestCase):
 	def test_cs_crack(self):
 		cipher = Caesar()
 		cracker = CaesarBruteForce()
-		open_text = normalize_text("Python is a general-purpose, interpreted high-level programming language")
+		open_text = normalize_text("Ja, Syn Poklopu, rozzuren do silenstvi, vodarnu srovnam se zemi, jmenem mistru kanvodstvi. Ja, matku vlastni, vsak kdo vi zda, prokouknutou mel, nikoliv jak pribuzni. ")
 		key = "d"
 		cipher_text = cipher.encrypt(open_text, key)
 		langmodel = LangModel(get_lang_path('cs'))
