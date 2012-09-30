@@ -12,7 +12,7 @@ class Transposition(object):
 		return "".join(map(lambda *x: "".join(x), *res))
 
 	def decrypt(self, cipher_text, key):
-		partition = self._partition_text_decode(cipher_text, len(cipher_text) / len(key))
+		partition = self._partition_text_decrypt(cipher_text, len(cipher_text) / len(key))
 		mapping = {v:k for k,v in self._get_mapping(key).items()}
 		return "".join(self._shuffle_letters(x, mapping) for x in partition)
 
@@ -36,7 +36,7 @@ class Transposition(object):
 				temp.append('x' * (length - len(temp)))
 				yield temp
 
-	def _partition_text_decode(self, text, number):
+	def _partition_text_decrypt(self, text, number):
 		classes = {x:[] for x in range(number)}
 		for i, char in enumerate(text):
 			classes[i % number].append(char)
