@@ -23,7 +23,8 @@ if args.i:
 elif args.t:
 	input_text = args.t
 else:
-	raise Exception("Input text not found")
+	print "Input text not found"
+	parser.print_help()
 
 input_text = normalize_text(input_text)
 
