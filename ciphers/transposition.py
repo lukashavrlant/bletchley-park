@@ -6,12 +6,14 @@ class Transposition(object):
 		super(Transposition, self).__init__()
 	
 	def encrypt(self, open_text, key):
+		key = self._repair_key(key)
 		partition = self._partition_text(open_text, len(key))
 		mapping = self._get_mapping(key)
 		res = [self._shuffle_letters(x, mapping) for x in partition]
 		return "".join(map(lambda *x: "".join(x), *res))
 
 	def decrypt(self, cipher_text, key):
+		key = self._repair_key(key)
 		partition = self._partition_text_decrypt(cipher_text, len(cipher_text) / len(key))
 		mapping = {v:k for k,v in self._get_mapping(key).items()}
 		return "".join(self._shuffle_letters(x, mapping) for x in partition)
@@ -39,7 +41,7 @@ class Transposition(object):
 				temp.append(char)
 		if temp:
 			if len(temp) < length:
-				temp.append('x' * (length - len(temp)))
+				temp += ('x' * (length - len(temp)))
 				yield temp
 
 	def _partition_text_decrypt(self, text, number):
