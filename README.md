@@ -40,6 +40,6 @@ If you want to crack a text "..." which was encrypted by Vigenère cipher:
 
 	$ bletchleypark -c vig -t "..."
 
-Or you can always use `-i path` option instead of `-t`:
+Or you can always use `-i file` option instead of `-t`:
 
 	$ bletchleypark -c vig -i path/to/file.txt
