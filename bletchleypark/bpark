@@ -25,6 +25,7 @@ elif args.t:
 else:
 	print "Input text not found"
 	parser.print_help()
+	exit()
 
 input_text = normalize_text(input_text)
 
