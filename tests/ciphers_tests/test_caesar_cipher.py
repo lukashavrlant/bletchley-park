@@ -1,6 +1,6 @@
 import unittest
-from ciphers.caesar import Caesar
-from common.string import normalize_text
+from bletchleypark.ciphers.caesar import Caesar
+from bletchleypark.common.string import normalize_text
 
 class TestCaesarCipher(unittest.TestCase):
 	def test_encrypt(self):

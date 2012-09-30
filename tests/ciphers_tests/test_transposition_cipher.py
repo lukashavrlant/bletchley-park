@@ -1,6 +1,6 @@
 import unittest
-from ciphers.transposition import Transposition
-from common.string import normalize_text
+from bletchleypark.ciphers.transposition import Transposition
+from bletchleypark.common.string import normalize_text
 import string
 
 class TestTranspositionCipher(unittest.TestCase):

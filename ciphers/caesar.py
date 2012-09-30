@@ -1,4 +1,4 @@
-from common.constants import ALPHABET_SIZE
+from bletchleypark.common.constants import ALPHABET_SIZE
 
 class Caesar(object):
 	"""Caesar cipher"""

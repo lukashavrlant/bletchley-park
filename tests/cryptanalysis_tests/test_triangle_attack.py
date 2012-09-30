@@ -1,10 +1,10 @@
 import unittest
-from ciphers.caesar import Caesar
-from cryptanalysis.triangle_attack import TriangleAttack
-from common.string import normalize_text
-from common.lang_model import LangModel
-from common.files import get_lang_path
-from cryptanalysis.language_stats import LanguageStats
+from bletchleypark.ciphers.caesar import Caesar
+from bletchleypark.cryptanalysis.triangle_attack import TriangleAttack
+from bletchleypark.common.string import normalize_text
+from bletchleypark.common.lang_model import LangModel
+from bletchleypark.common.files import get_lang_path
+from bletchleypark.cryptanalysis.language_stats import LanguageStats
 
 class TestTriangleForce(unittest.TestCase):
 	def test_cs_crack(self):

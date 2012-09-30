@@ -1,4 +1,4 @@
-from ciphers.caesar import Caesar
+from bletchleypark.ciphers.caesar import Caesar
 from itertools import cycle
 
 class Vigenere(object):

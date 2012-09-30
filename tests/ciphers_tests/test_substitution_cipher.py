@@ -1,6 +1,6 @@
 import unittest
-from ciphers.substitution import Substitution
-from common.string import normalize_text
+from bletchleypark.ciphers.substitution import Substitution
+from bletchleypark.common.string import normalize_text
 import string
 
 class TestSubstitutionCipher(unittest.TestCase):

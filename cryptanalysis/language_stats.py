@@ -1,4 +1,4 @@
-from common.constants import ALPHABET_SIZE
+from bletchleypark.common.constants import ALPHABET_SIZE
 import string
 from collections import Counter
 

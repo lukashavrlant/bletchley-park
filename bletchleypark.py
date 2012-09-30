@@ -1,10 +1,10 @@
 #!/usr/bin/python
-from ciphers import caesar, substitution, vigenere, transposition
-from cryptanalysis import caesar_brute_force, vigenere_brute_force, long_word_attack
-from common.string import normalize_text
-from cryptanalysis.language_stats import LanguageStats
-from common.lang_model import LangModel
-from common.files import get_lang_path, readfile, savefile, send_to_output
+from bletchleypark.ciphers import caesar, substitution, vigenere, transposition
+from bletchleypark.cryptanalysis import caesar_brute_force, vigenere_brute_force, long_word_attack
+from bletchleypark.common.string import normalize_text
+from bletchleypark.cryptanalysis.language_stats import LanguageStats
+from bletchleypark.common.lang_model import LangModel
+from bletchleypark.common.files import get_lang_path, readfile, savefile, send_to_output
 import argparse
 
 parser = argparse.ArgumentParser(description='Cryptanalysis historical ciphers')

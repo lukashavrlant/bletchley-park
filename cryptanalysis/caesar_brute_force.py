@@ -1,4 +1,4 @@
-from ciphers.caesar import Caesar
+from bletchleypark.ciphers.caesar import Caesar
 import string
 
 class CaesarBruteForce(object):

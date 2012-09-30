@@ -1,4 +1,4 @@
-from ciphers.transposition import Transposition
+from bletchleypark.ciphers.transposition import Transposition
 from collections import Counter
 
 class LongWordAttack(object):

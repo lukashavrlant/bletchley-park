@@ -1,6 +1,6 @@
 import unittest
-from ciphers.vigenere import Vigenere
-from common.string import normalize_text
+from bletchleypark.ciphers.vigenere import Vigenere
+from bletchleypark.common.string import normalize_text
 
 class TestVigenereCipher(unittest.TestCase):
 	def test_encrypt(self):

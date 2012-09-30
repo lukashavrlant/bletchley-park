@@ -1,8 +1,8 @@
 import string
 from itertools import combinations
 from collections import Counter
-from common.constants import ALPHABET_SIZE
-from ciphers.caesar import Caesar
+from bletchleypark.common.constants import ALPHABET_SIZE
+from bletchleypark.ciphers.caesar import Caesar
 
 class TriangleAttack(object):
 	"""Cryptanalysis method for Caesar cipher"""

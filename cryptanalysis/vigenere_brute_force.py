@@ -1,5 +1,5 @@
-from cryptanalysis.triangle_attack import TriangleAttack
-from ciphers.vigenere import Vigenere
+from bletchleypark.cryptanalysis.triangle_attack import TriangleAttack
+from bletchleypark.ciphers.vigenere import Vigenere
 
 class VigenereBruteForce(object):
 	"""Cryptanalysis method for Vigenere cipher"""
