@@ -1,0 +1,26 @@
+import unittest
+from bletchleypark.ciphers.transposition import Transposition
+from bletchleypark.cryptanalysis.long_word_attack import LongWordAttack
+from bletchleypark.common.string import normalize_text
+from bletchleypark.common.lang_model import LangModel
+from bletchleypark.common.files import get_lang_path
+from bletchleypark.cryptanalysis.language_stats import LanguageStats
+
+class TestLongWord(unittest.TestCase):
+	def test_cs_crack(self):
+		cipher = Transposition()
+		cracker = LongWordAttack()
+		open_text = normalize_text("jajasynpoklopurozzuresndosilenstvivodarnusrovnamsezemijmenemmistrukanvodstvijamatkuvlastnivsakkdovizdaprokouknutoumelnikolivjakpribuznismrtlidemzvodarnysmrtivrchnizradkynijenslavumistrumzcistirnytedvidisotcecozzenstinytveuzralouzjetotadybratretyslezlzradcumdozadkujensedobrepodivejcostvojijimkouprovedlimusimedrzetpospoluatuznenimarnesnazenivejmenusatanarozpoutejmepeklouzsevmychpredstavachrodisedevyjevykrasnemodrenadrzecimtakrychlecernajinenitonahodouodpadnivodamrtverybynahazimedovodarenskychobjektuuznehodlamdalnaslouchattemvodarenskymblabolumsedekrysysezerouzbytkyvodarenskychkonstrukcipredpovidamvecnouskazuvodarenskemafiitakjakodavnopredcasemjsmesvatouchatrutopilystejnykonecpripravimepodvodnikumzvodarnynelzeveritnikomukdomatlamuplnoucistotyvsechnytyhlebestiecekavodazestokysmrtlidemzvodarnysmrtivrchnizradkynijenslavumistrumzcistirnyzevsechstrannavodarnusilaspinyutocizhorastavbydrtizeleznemepoklopydokristalovevodytecoucistirenskesplaskysabotaztospachanavejmenusedepravdy")
+		key = cipher._repair_key("rtdwsvb")
+		cipher_text = cipher.encrypt(open_text, key)
+		langmodel = LangModel(get_lang_path('cs'))
+		langmodel.get_words = self.get_words
+		cracked_key = cracker.crack(cipher_text, LanguageStats(langmodel))
+		self.assertEqual(cracked_key, key)
+
+	def get_words(self, length):
+		words = {
+			7: ['poklopu']
+		}
+
+		return words.get(length, set())
