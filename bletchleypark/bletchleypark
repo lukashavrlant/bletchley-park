@@ -20,7 +20,14 @@ parser.add_argument('--charset', metavar="S", help="Charset of the input file")
 args = parser.parse_args()
 
 if args.i:
-	input_text = readfile(args.i, args.charset if args.charset else 'utf-8')
+	try:
+		input_text = readfile(args.i, args.charset if args.charset else 'utf-8')
+	except UnicodeDecodeError as e:
+		print "Unicode decode error. File is probably not in UTF-8. Try --charset option."
+		exit()
+	except Exception as e:
+		print str(e)
+		exit()
 elif args.t:
 	input_text = args.t
 else:
