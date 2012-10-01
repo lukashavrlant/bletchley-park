@@ -7,20 +7,33 @@ from bletchleypark.common.files import get_lang_path
 from bletchleypark.cryptanalysis.language_stats import LanguageStats
 
 class TestLongWord(unittest.TestCase):
-	def test_cs_crack(self):
-		cipher = Transposition()
-		cracker = LongWordAttack()
-		open_text = normalize_text("jajasynpoklopurozzuresndosilenstvivodarnusrovnamsezemijmenemmistrukanvodstvijamatkuvlastnivsakkdovizdaprokouknutoumelnikolivjakpribuznismrtlidemzvodarnysmrtivrchnizradkynijenslavumistrumzcistirnytedvidisotcecozzenstinytveuzralouzjetotadybratretyslezlzradcumdozadkujensedobrepodivejcostvojijimkouprovedlimusimedrzetpospoluatuznenimarnesnazenivejmenusatanarozpoutejmepeklouzsevmychpredstavachrodisedevyjevykrasnemodrenadrzecimtakrychlecernajinenitonahodouodpadnivodamrtverybynahazimedovodarenskychobjektuuznehodlamdalnaslouchattemvodarenskymblabolumsedekrysysezerouzbytkyvodarenskychkonstrukcipredpovidamvecnouskazuvodarenskemafiitakjakodavnopredcasemjsmesvatouchatrutopilystejnykonecpripravimepodvodnikumzvodarnynelzeveritnikomukdomatlamuplnoucistotyvsechnytyhlebestiecekavodazestokysmrtlidemzvodarnysmrtivrchnizradkynijenslavumistrumzcistirnyzevsechstrannavodarnusilaspinyutocizhorastavbydrtizeleznemepoklopydokristalovevodytecoucistirenskesplaskysabotaztospachanavejmenusedepravdy")
-		key = cipher._repair_key("rtdwsvb")
-		cipher_text = cipher.encrypt(open_text, key)
+	def setUp(self):
+		self.cipher = Transposition()
+		self.cracker = LongWordAttack()
+		self.open_text = normalize_text("jajasynpoklopurozzuresndosilenstvivodarnusrovnamsezemijmenemmistrukanvodstvijamatkuvlastnivsakkdovizdaprokouknutoumelnikolivjakpribuznismrtlidemzvodarnysmrtivrchnizradkynijenslavumistrumzcistirnytedvidisotcecozzenstinytveuzralouzjetotadybratretyslezlzradcumdozadkujensedobrepodivejcostvojijimkouprovedlimusimedrzetpospoluatuznenimarnesnazenivejmenusatanarozpoutejmepeklouzsevmychpredstavachrodisedevyjevykrasnemodrenadrzecimtakrychlecernajinenitonahodouodpadnivodamrtverybynahazimedovodarenskychobjektuuznehodlamdalnaslouchattemvodarenskymblabolumsedekrysysezerouzbytkyvodarenskychkonstrukcipredpovidamvecnouskazuvodarenskemafiitakjakodavnopredcasemjsmesvatouchatrutopilystejnykonecpripravimepodvodnikumzvodarnynelzeveritnikomukdomatlamuplnoucistotyvsechnytyhlebestiecekavodazestokysmrtlidemzvodarnysmrtivrchnizradkynijenslavumistrumzcistirnyzevsechstrannavodarnusilaspinyutocizhorastavbydrtizeleznemepoklopydokristalovevodytecoucistirenskesplaskysabotaztospachanavejmenusedepravdy")
+
+	def test_cs_keylen4(self):
+		self._help_test_method("pass")
+
+	def test_cs_keylen7(self):
+		self._help_test_method("hfewqjn")
+
+	def test_cs_keylen10(self):
+		self._help_test_method("fhwtudxnbs")
+
+	def _help_test_method(self, key):
+		key = self.cipher._repair_key(key)
+		cipher_text = self.cipher.encrypt(self.open_text, key)
 		langmodel = LangModel(get_lang_path('cs'))
 		langmodel.get_words = self.get_words
-		cracked_key = cracker.crack(cipher_text, LanguageStats(langmodel))
+		cracked_key = self.cracker.crack(cipher_text, LanguageStats(langmodel))
 		self.assertEqual(cracked_key, key)
 
 	def get_words(self, length):
 		words = {
-			7: ['poklopu']
+			4: ['ucis', 'vody', 'ahoj', 'burt', 'test', 'fail'],
+			7: ['poklopu', 'asdfghj', 'poklopy'],
+			10: ['kristalove']
 		}
 
-		return words.get(length, set())
+		return words.get(length, [])
