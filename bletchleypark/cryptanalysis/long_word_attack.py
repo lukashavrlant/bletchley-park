@@ -25,7 +25,7 @@ class LongWordAttack(object):
 							yield key
 
 	def _get_valid_keys(self, cipher_word, real_word):
-		for perm in self._get_perms(real_word, 0, [], self.get_positions(cipher_word)):
+		for perm in self._get_perms(cipher_word, 0, [], self.get_positions(real_word)):
 			yield "".join(map(lambda x: chr(x + ord('a')), perm))
 
 	def _get_perms(self, word, currPos, visited, positions):
