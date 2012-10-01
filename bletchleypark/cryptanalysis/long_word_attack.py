@@ -25,6 +25,7 @@ class LongWordAttack(object):
 							yield key
 
 	def _get_valid_keys(self, cipher_word, real_word):
+		print cipher_word, real_word
 		for perm in self._get_perms(real_word, 0, [], self.get_positions(cipher_word)):
 			yield "".join(map(lambda x: chr(x + ord('a')), perm))
 
@@ -49,6 +50,4 @@ class LongWordAttack(object):
 
 	def _key_lengths(self, cipher_text):
 		ltext = len(cipher_text)
-		for i in range(2, self.max_keylen + 1):
-			if ltext % i == 0:
-				yield i
+		return (i for i in range(2, self.max_keylen + 1) if ltext % i == 0)
