@@ -13,12 +13,12 @@ class LanguageStats(object):
 		ltext = float(len(text))
 		counter = Counter(text)
 		rel_counter = {x:(counter.get(x, 0)/ltext)*100 for x in string.ascii_lowercase}
-		unograms = self._deviation(self.frequency['letters'], rel_counter)
+		unigrams = self._deviation(self.frequency['letters'], rel_counter)
 		bigrams = self._normalize_deviation(self.frequency['bigrams'], text, 2)
 		trigrams = self._normalize_deviation(self.frequency['trigrams'], text, 3)
 		topwrods_count = self._count_top_words(text)
-		# print "uno: %s, bi: %s, tri: %s, topw: %s" % (unograms, bigrams, trigrams, topwrods_count)
-		return unograms + bigrams + trigrams + topwrods_count
+		# print "uno: %s, bi: %s, tri: %s, topw: %s" % (unigrams, bigrams, trigrams, topwrods_count)
+		return unigrams + bigrams + trigrams + topwrods_count
 
 	def most_meaningful(self, texts):
 		max_index = 0
