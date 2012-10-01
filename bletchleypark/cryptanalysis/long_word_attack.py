@@ -10,8 +10,8 @@ class LongWordAttack(object):
 
 	def crack(self, cipher_text, langstats):
 		key_text_pair = lambda key: (key, self.transposition.decrypt(cipher_text, key))
-		texts = (key_text_pair(key) for key in self._get_possible_keys(cipher_text, langstats))
-		return langstats.most_meaningful(texts)
+		key_text = (key_text_pair(key) for key in self._get_possible_keys(cipher_text, langstats))
+		return langstats.most_meaningful(key_text)
 
 	def _get_possible_keys(self, cipher_text, langstats):
 		reshuffle_text = self.transposition._partition_text_decrypt
@@ -26,7 +26,7 @@ class LongWordAttack(object):
 
 	def _get_valid_keys(self, cipher_word, real_word):
 		for perm in self._get_perms(cipher_word, 0, [], self.get_positions(real_word)):
-			yield "".join(map(lambda x: chr(x + ord('a')), perm))
+			yield "".join(chr(x + ord('a')) for x in perm)
 
 	def _get_perms(self, word, currPos, visited, positions):
 		if currPos == len(word):
@@ -45,7 +45,6 @@ class LongWordAttack(object):
 			else:
 				pos[char] = {i}
 		return pos
-
 
 	def _key_lengths(self, cipher_text):
 		ltext = len(cipher_text)

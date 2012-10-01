@@ -8,5 +8,5 @@ class CaesarBruteForce(object):
 		self.caesar = Caesar()
 		
 	def crack(self, cipher_text, langstats):
-		keys = ((k,self.caesar.decrypt(cipher_text, k)) for k in string.ascii_lowercase)
-		return langstats.most_meaningful(keys)
+		key_text = ((k,self.caesar.decrypt(cipher_text, k)) for k in string.ascii_lowercase)
+		return langstats.most_meaningful(key_text)

@@ -10,8 +10,8 @@ class VigenereBruteForce(object):
 		self.vigenere = Vigenere()
 	
 	def crack(self, cipher_text, langstats):
-		keys = self._get_possible_keys(cipher_text, langstats)
-		return langstats.most_meaningful(keys)
+		key_text = self._get_possible_keys(cipher_text, langstats)
+		return langstats.most_meaningful(key_text)
 
 	def _get_possible_keys(self, cipher_text, langstats):
 		for i in range(2, self.max_key_len + 1):
