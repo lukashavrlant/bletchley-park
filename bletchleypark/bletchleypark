@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 from bletchleypark.ciphers import caesar, substitution, vigenere, transposition
 from bletchleypark.cryptanalysis import caesar_brute_force, vigenere_brute_force, long_word_attack
 from bletchleypark.common.string import normalize_text
