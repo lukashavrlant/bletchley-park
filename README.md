@@ -13,7 +13,7 @@ You will need Python 2.7. Installation using git:
 	$ sudo python setup.py install
 	$ bletchleypark -h
 
-Or simply download the zip file instead cloning from GitHub.
+Or simply download the zip file instead of cloning from GitHub.
 
 ## Usage
 
